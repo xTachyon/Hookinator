@@ -3,9 +3,13 @@ package hookinator.generator
 import hookinator.parser.ParserFunction
 import java.io.File
 
-class HookGenerator(val initialFunctions: List<ParserFunction>) {
+class HookGenerator(initialFunctions: List<ParserFunction>) {
   private val functions = generateHookedFunctionsSignature(initialFunctions)
-  private val hookscpp = HooksCppGenerator(functions, "cpp/")
+
+  private val folder = "D:\\programs\\4story_spy\\msimg32\\"
+
+  private val hookscpp = HooksCppGenerator(functions, folder)
+  private val hookshpp = HookHppGeneratorval(functions, folder)
 
   init {
     File("cpp/").mkdirs()
@@ -14,6 +18,9 @@ class HookGenerator(val initialFunctions: List<ParserFunction>) {
   fun write() {
     hookscpp.generate()
     hookscpp.finish()
+
+    hookshpp.generate()
+    hookshpp.finish()
   }
 }
 

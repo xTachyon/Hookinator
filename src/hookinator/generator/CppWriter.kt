@@ -14,6 +14,10 @@ class CppWriter(private val filename: String) {
     file.close()
   }
 
+  fun write(string: String) {
+    builder.append(string)
+  }
+
   fun writeInclude(include: String, standard: Boolean = true) {
     val quotStart = when {
       standard -> '<'
@@ -35,7 +39,7 @@ class CppWriter(private val filename: String) {
     builder.append("${function.returnType} ${function.callingConvetion} $name(${generateArgsString(function.arguments)})")
   }
 
-  private fun generateArgsString(args: List<Variable>): String {
+  fun generateArgsString(args: List<Variable>): String {
     val builder = StringBuilder()
 
     if (args.isNotEmpty()) {

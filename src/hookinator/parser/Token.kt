@@ -19,7 +19,7 @@ class Token(val tokenString: String) {
   }
 
   fun isWinApiMacro(): Boolean {
-    val macros = arrayOf("_In_", "__in", "__out", "__inout", "_Out_opt_", "_Inout_opt_", "_Inout_", "FAR")
+    val macros = arrayOf("_In_", "__in", "__out", "__inout", "_Out_opt_", "_Inout_opt_", "_Inout_", "FAR", "_In_opt_")
     return macros.indexOf(tokenString) >= 0
   }
 

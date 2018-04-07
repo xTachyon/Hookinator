@@ -10,6 +10,7 @@ class HookGenerator(initialFunctions: List<ParserFunction>) {
 
   private val hookscpp = HooksCppGenerator(functions, folder)
   private val hookshpp = HookHppGeneratorval(functions, folder)
+  private val dllmaincpp = DllMainCppGenerator(functions, folder)
 
   init {
     File("cpp/").mkdirs()
@@ -21,6 +22,9 @@ class HookGenerator(initialFunctions: List<ParserFunction>) {
 
     hookshpp.generate()
     hookshpp.finish()
+
+    dllmaincpp.generate()
+    dllmaincpp.finish()
   }
 }
 

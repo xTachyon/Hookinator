@@ -1,28 +1,21 @@
-SOCKET
-WSAAPI
-socket(
-    _In_ int af,
-    _In_ int type,
-    _In_ int protocol
-    );
 
-int
-WSAAPI
-recv(
-    _In_ SOCKET s,
-     char FAR * buf,
-    _In_ int len,
-    _In_ int flags
-    );
 
-int
-WSAAPI
-WSARecv(
-    _In_ SOCKET s,
-    LPWSABUF lpBuffers,
-    _In_ DWORD dwBufferCount,
-    _Out_opt_ LPDWORD lpNumberOfBytesRecvd,
-    _Inout_ LPDWORD lpFlags,
-    _Inout_opt_ LPWSAOVERLAPPED lpOverlapped,
-    _In_opt_ LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine
-    );
+        HANDLE
+        WINAPI
+        CreateFileA(
+            _In_ LPCSTR lpFileName,
+            _In_ DWORD dwDesiredAccess,
+            _In_ DWORD dwShareMode,
+            _In_opt_ LPSECURITY_ATTRIBUTES lpSecurityAttributes,
+            _In_ DWORD dwCreationDisposition,
+            _In_ DWORD dwFlagsAndAttributes,
+            _In_opt_ HANDLE hTemplateFile
+            );
+
+            HFILE
+            WINAPI
+            OpenFile(
+                _In_    LPCSTR lpFileName,
+                _Inout_ LPOFSTRUCT lpReOpenBuff,
+                _In_    UINT uStyle
+                );

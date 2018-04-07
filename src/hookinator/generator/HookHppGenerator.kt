@@ -40,7 +40,8 @@ class HookHppGeneratorval(val functions: List<HookedFunction>, folder: String) {
 
   private fun writeRealFunctions() {
     for (i in functions) {
-      writer.write("${i.returnType} (${i.callingConvetion} *real_${i.name})(${generateArgsString(i.arguments)}) = ${i.name};\n")
+      val arguments = i.arguments.joinToString { x -> x.type.typeName }
+      writer.write("extern ${i.returnType} (${i.callingConvetion} *real_${i.name})($arguments);\n")
     }
     writer.writeNewLine()
   }
